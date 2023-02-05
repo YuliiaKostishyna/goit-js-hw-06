@@ -7,14 +7,13 @@ const ingredients = [
   'Condiments',
 ];
 
-// ingredients.map(ingredient =>
-//   // listItem.textContent = ingredient;
-//   // document.querySelector('#ingredients').append(document.createElement("li"))
-// `<li>${ingredient}</li>` .join("");
-// )
+const list = document.querySelector('ul#ingredients')
+let fragment = new DocumentFragment();
 
-const list = document.querySelector("#ingredients");
-const markup = ingredients
-  .map((ingredient) => `<li >${ingredient}</li>`)
-  .join("");
-list.insertAdjacentHTML("beforeend", markup);
+ingredients.map((ingredient) => {
+  const itemList = document.createElement("li");
+  itemList.classList.add('item');
+  itemList.textContent += ingredient;
+  fragment.appendChild(itemList)
+})
+document.querySelector('ul#ingredients').append(fragment);
